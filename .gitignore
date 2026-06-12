@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+
+# koşu çıktıları (üretilir)
+runs/
+
+# profiler çıktıları
+*.nsys-rep
+*.qdrep
+*.ncu-rep
+*.sqlite
+
+# editör / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.log

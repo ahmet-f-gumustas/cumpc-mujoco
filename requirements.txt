@@ -1,0 +1,9 @@
+mujoco>=3.0
+numpy
+pyyaml
+matplotlib
+
+# CUDA MPPI çekirdeği (cumpc_core) ayrı repodan kurulur:
+#   uv pip install -e ../CuMPC
+# veya:
+#   pip install git+https://github.com/ahmet-f-gumustas/CuMPC.git
