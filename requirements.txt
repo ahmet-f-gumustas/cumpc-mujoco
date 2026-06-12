@@ -3,7 +3,6 @@ numpy
 pyyaml
 matplotlib
 
-# CUDA MPPI çekirdeği (cumpc_core) ayrı repodan kurulur:
-#   uv pip install -e ../CuMPC
-# veya:
-#   pip install git+https://github.com/ahmet-f-gumustas/CuMPC.git
+# CUDA MPPI çekirdeği (cumpc_core) ayrı repodan kurulur — bkz. README "Kurulum":
+#   Yol 1: pip install "cumpc @ git+https://github.com/ahmet-f-gumustas/CuMPC.git@v0.1.0"
+#   Yol 2 (geliştirme): uv pip install -e ../CuMPC

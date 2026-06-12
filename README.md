@@ -17,16 +17,42 @@ Sonuçlar: [docs/RESULTS.md](docs/RESULTS.md) · Ortam raporu: [docs/PHASE0_REPO
 | MPPI loop-rate | ≥ 20 Hz | ~4000 Hz (step ≈ 150 µs) |
 | Slip-aware vs naive (yamaç) | daha düşük RMS | 0.075 vs 0.107 m (−%30) |
 
+## Gereksinimler
+
+- NVIDIA GPU + CUDA Toolkit ≥ 12.x (`nvcc` PATH'te) — çekirdek kurulumda derlenir
+- Python ≥ 3.10
+
 ## Kurulum
 
+### Yol 1 — Sadece çalıştırmak için (pip + git)
+
+CuMPC çekirdeği doğrudan GitHub'dan kurulur:
+
 ```bash
-uv venv --python 3.10 && source .venv/bin/activate
-uv pip install mujoco numpy pyyaml matplotlib
-uv pip install -e ../CuMPC        # CUDA MPPI çekirdeği (cumpc_core)
+git clone https://github.com/ahmet-f-gumustas/cumpc-mujoco.git
+cd cumpc-mujoco
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+pip install "cumpc @ git+https://github.com/ahmet-f-gumustas/CuMPC.git@v0.1.0"
+python examples/track_scurve.py --viewer
 ```
 
-> CuMPC çekirdeği CUDA 12.x + sm_89 (RTX 4070) için derlenir; ayrıntı CuMPC
-> reposunun README'sinde.
+> Çekirdek varsayılan olarak `sm_89` (RTX 40xx) için derlenir. Farklı GPU'da:
+> `CMAKE_ARGS="-DCMAKE_CUDA_ARCHITECTURES=86" pip install "cumpc @ git+..."`
+> (RTX 30xx için 86; `nvidia-smi --query-gpu=compute_cap --format=csv` ile öğrenilir).
+>
+> Not: `v0.1.0` etiketi CuMPC çekirdeği yayınlandığında aktif olur.
+
+### Yol 2 — Çekirdeği de geliştirmek için (yan yana klon + editable)
+
+```bash
+git clone https://github.com/ahmet-f-gumustas/CuMPC.git
+git clone https://github.com/ahmet-f-gumustas/cumpc-mujoco.git
+cd cumpc-mujoco
+uv venv --python 3.10 && source .venv/bin/activate
+uv pip install -r requirements.txt
+uv pip install -e ../CuMPC        # çekirdek değişince aynı komutla yeniden derlenir
+```
 
 ## Çalıştırma
 
