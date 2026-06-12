@@ -87,4 +87,4 @@ docs/             sonuçlar, ortam raporu, grafikler
 
 ## Lisans
 
-GNU General Public License v3.0 — bkz. CuMPC reposundaki [LICENSE](../CuMPC/LICENSE).
+Apache License 2.0 — bkz. [LICENSE](LICENSE).
